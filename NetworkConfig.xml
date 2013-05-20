@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NetworkConfig>
+
+	<ServerInfo>
+		<ServerNum>10</ServerNum>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+		<ServerEntry> <ip>192.168.1.1</ip><port>8080</port>	</ServerEntry>
+	</ServerInfo>
+	
+	<NetworkParameter>
+	
+		<nodeNum> 1000000 </nodeNum>
+		<attriNum> 16 </attriNum>
+		
+		<mu>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+			<muValue> 0.5 </muValue>
+		</mu>
+		
+		<theta>
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+			<thetaEntry>
+				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+			</thetaEntry>
+			
+		</theta>
+	</NetworkParameter>
+
+</NetworkConfig>
