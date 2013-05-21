@@ -1,4 +1,4 @@
-
+package gen;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -17,17 +17,17 @@ import org.xml.sax.SAXException;
 public abstract class Config {
 	protected Document config = null;
 	protected String fileName = null;
-	public Config(String fileName)
-	{
+
+	public Config(String fileName) {
 		this.fileName = fileName;
 	}
-	protected void readFile()
-	{
+
+	protected void readFile() {
 		FileInputStream file = null;
 		try {
-			file = new FileInputStream(fileName); 
-			DocumentBuilderFactory factory =
-					DocumentBuilderFactory.newInstance();
+			file = new FileInputStream(fileName);
+			DocumentBuilderFactory factory = DocumentBuilderFactory
+					.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			config = builder.parse(file);
 			file.close();
@@ -42,5 +42,6 @@ public abstract class Config {
 			e.printStackTrace();
 		}
 	}
+
 	protected abstract void loadConfig();
 }

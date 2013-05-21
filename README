@@ -1,0 +1,12 @@
+1. how to run server example:
+
+- compile using eclipse
+- cd bin
+- start rmiregistry
+- rmic rmi.ServerImpl
+- java rmi.ServerExample
+
+2. how to run client example
+- cd bin
+- java rmi.ClientExample
+
