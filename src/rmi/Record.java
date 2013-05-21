@@ -12,6 +12,13 @@ public class Record implements Serializable {
 	 */
 	private static final long serialVersionUID = 9163774801769495403L;
 
+	public Record(){}
+	
+	public Record(long uID, int attributeNum){
+		userid = uID;
+		attributes = new boolean[attributeNum];
+	}
+	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("id: ");

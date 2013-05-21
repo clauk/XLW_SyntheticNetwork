@@ -18,6 +18,8 @@ import org.w3c.dom.NodeList;
 
 import org.json.simple.JSONValue;
 
+import rmi.*;
+
 public class NetworkGenerator {
 	private NetworkConfig _networkConfig = null;
 
@@ -28,14 +30,14 @@ public class NetworkGenerator {
 	private Double[][][] _theta;
 
 	// Network Nodes
-	private LinkedList<NetworkNode> _nodeList;
+	private LinkedList<Record> _nodeList;
 
 	// Network Edges Result
-	private Map<Integer, LinkedList<Integer>> _edgeList;
+	private Map<Long, LinkedList<Long>> _edgeListMap;
 
 	public NetworkGenerator() {
 		_networkConfig = new NetworkConfig();
-		_nodeList = new LinkedList<NetworkNode>();
+		_nodeList = new LinkedList<Record>();
 	}
 
 	public void generate() throws IOException, InterruptedException {
@@ -46,12 +48,12 @@ public class NetworkGenerator {
 
 	}
 
-	private void generateNode() {
-		for (int i = 0; i < _n; i++) {
-			NetworkNode _node = new NetworkNode(i, _k);
+	public void generateNode() {
+		for (long i = 0; i < _n; i++) {
+			Record _node = new Record(i, _k);
 			for (int j = 0; j < _k; j++) {
 				if (Math.random() <= _mu[j])
-					_node.setAttribute(j, 1);
+					_node.attributes[j] = true;
 			}
 			_nodeList.add(_node);
 		}
@@ -63,32 +65,55 @@ public class NetworkGenerator {
 
 	}
 
-	private void generateEdges() {
+	public void generateEdges(LinkedList<Record> targetNodeList) {
 		// TODO
-		LinkedList<NetworkNode> _targetNodeList = new LinkedList<NetworkNode>();
-
-		Iterator<NetworkNode> myIterator = _nodeList.iterator();
+		
+		Iterator<Record> myIterator = _nodeList.iterator();
 		while (myIterator.hasNext()) {
-			LinkedList<Integer> ans = new LinkedList<Integer>();
-			NetworkNode myNode = myIterator.next();
-			Iterator<NetworkNode> targetIterator = _targetNodeList.iterator();
+			Record myNode = myIterator.next();
+			LinkedList<Long> ans = _edgeListMap.get(myNode.userid);
+			if(ans == null) ans = new LinkedList<Long>();
+			Iterator<Record> targetIterator = targetNodeList.iterator();
 			while (targetIterator.hasNext()) {
-				NetworkNode targetNode = targetIterator.next();
+				Record targetNode = targetIterator.next();
 				if (checkEdges(myNode, targetNode))
-					ans.add(targetNode.node_id);
+					ans.add(targetNode.userid);
 			}
-			_edgeList.put(myNode.node_id, ans);
+			_edgeListMap.put(myNode.userid, ans);
 		}
 	}
 
-	private boolean checkEdges(NetworkNode myNode, NetworkNode targetNode) {
+	private boolean checkEdges(Record myNode, Record targetNode) {
 		double prob = 1.0;
 		for (int i = 0; i < _k; i++) {
-			prob *= _theta[i][myNode.attributes[i]][targetNode.attributes[i]];
+			if(myNode.attributes[i] == true){
+				if(targetNode.attributes[i] == true){
+					prob *= _theta[i][1][1];
+				}
+				else{
+					prob *= _theta[i][1][0];
+				}					
+			}
+			else{
+				if(targetNode.attributes[i] == true){
+					prob *= _theta[i][0][1];
+				}
+				else{
+					prob *= _theta[i][0][0];
+				}					
+			}
 		}
 		if (Math.random() <= prob)
 			return true;
 		else
 			return false;
+	}
+	
+	public LinkedList<Record> getNodeResult(){
+		return _nodeList;
+	}
+	
+	public Map<Long, LinkedList<Long>> getEdgeResult(){
+		return _edgeListMap;
 	}
 }
