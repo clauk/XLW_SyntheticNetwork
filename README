@@ -10,3 +10,26 @@
 - cd bin
 - java rmi.ClientExample
 
+
+
+Barrier running step:
+
+- Barrier server:
+	compile with eclipse(not tested) or
+		$javac -sourcepath src/ src/rmi/B*.java
+	cd src
+	rmiregistry &	--for Unix/Linux
+	rmic rmi.BarrierImpl
+	java rmi.BarrierExample [client #, no more than 10]
+	
+- Barrier client:
+	cd src
+	java rmi.BarrierClientExample [ID #]
+
+
+- Example:
+	java rmi.BarrierExample 3
+	java rmi.BarrierClientExample 0
+	java rmi.BarrierClientExample 1
+	java rmi.BarrierClientExample 2
+
