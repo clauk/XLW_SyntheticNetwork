@@ -17,7 +17,7 @@ public class NetworkServerImpl extends UnicastRemoteObject implements IServer {
 
 	private NetworkGenerator _networkGenerator;
 	
-	protected NetworkServerImpl(NetworkGenerator _netGen) throws RemoteException {
+	public NetworkServerImpl(NetworkGenerator _netGen) throws RemoteException {
 		super();
 		_networkGenerator = _netGen;
 	}

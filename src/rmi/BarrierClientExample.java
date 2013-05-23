@@ -39,4 +39,34 @@ public class BarrierClientExample {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void BarrierClientListen(String barrierServer, int serverID){
+		try {
+			BServer server = (BServer) Naming.lookup(barrierServer);
+
+			/* Set serverID with argument */
+			while (true) {
+				//System.out.println("into loop");
+				try 
+				{ 
+					Thread.currentThread().sleep(2000); 
+				} 
+				catch(Exception e){
+					//System.out.println("Sleep Exception");
+				}
+
+				int result = server.CheckBarrierStatus(serverID);
+				if (result == 1) {
+					//System.out.println("GOGOGO");
+					break;
+				}
+				//else
+					//System.out.println("Client #" + String.valueOf(serverID) + " is Waiting...");
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ServerConfig>	
+	<ServerID>1</ServerID>
+	<ServerNum>8</ServerNum>
+	<BarrierEntry><ip>192.168.1.1</ip><port>8080</port></BarrierEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+	<ServerEntry><ip>192.168.1.1</ip><port>8080</port></ServerEntry>
+</ServerConfig>

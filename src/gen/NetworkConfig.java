@@ -41,46 +41,33 @@ public class NetworkConfig extends Config {
 	}
 
 	private void loadNetworkParameter() {
-		Element networkParameter = (Element) config.getElementsByTagName(
-				NETWORK_PARAMETER).item(0);
+		Element networkParameter = (Element) config.getElementsByTagName(NETWORK_PARAMETER).item(0);
 
-		Node nodeNum = networkParameter.getElementsByTagName(NODE_NUMBER).item(
-				0);
+		Node nodeNum = networkParameter.getElementsByTagName(NODE_NUMBER).item(0);
 		_nodeNum = Integer.parseInt(nodeNum.getFirstChild().getNodeValue());
-		Node attriNum = networkParameter.getElementsByTagName(ATTRIBUTE_NUMBER)
-				.item(0);
-		_attributeNum = Integer.parseInt(attriNum.getFirstChild()
-				.getNodeValue());
+		Node attriNum = networkParameter.getElementsByTagName(ATTRIBUTE_NUMBER).item(0);
+		_attributeNum = Integer.parseInt(attriNum.getFirstChild().getNodeValue());
 
 		_muVector = new Double[_attributeNum];
 		_thetaVector = new Double[_attributeNum][2][2];
 
-		NodeList mu = networkParameter.getElementsByTagName(MU_VECTOR);
+		NodeList mu = networkParameter.getElementsByTagName(MU_VALUE);
 		for (int i = 0; i < _attributeNum; i++) {
-			double muValue = Double.parseDouble(mu.item(i).getFirstChild()
-					.getNodeValue());
+			double muValue = Double.parseDouble(mu.item(i).getFirstChild().getNodeValue());
 			_muVector[i] = muValue;
 		}
 
-		NodeList theta = networkParameter.getElementsByTagName(THETA_VECTOR);
+		NodeList theta = networkParameter.getElementsByTagName(THETA_ENTRY);
 		for (int i = 0; i < _attributeNum; i++) {
 			Element thetaEntry = (Element) (theta.item(i));
-			Node thetaValue00 = thetaEntry.getElementsByTagName(THETA_VALUE_00)
-					.item(0);
-			_thetaVector[i][0][0] = Double.parseDouble(thetaValue00
-					.getFirstChild().getNodeValue());
-			Node thetaValue01 = thetaEntry.getElementsByTagName(THETA_VALUE_01)
-					.item(0);
-			_thetaVector[i][0][1] = Double.parseDouble(thetaValue01
-					.getFirstChild().getNodeValue());
-			Node thetaValue10 = thetaEntry.getElementsByTagName(THETA_VALUE_10)
-					.item(0);
-			_thetaVector[i][1][0] = Double.parseDouble(thetaValue10
-					.getFirstChild().getNodeValue());
-			Node thetaValue11 = thetaEntry.getElementsByTagName(THETA_VALUE_11)
-					.item(0);
-			_thetaVector[i][1][1] = Double.parseDouble(thetaValue11
-					.getFirstChild().getNodeValue());
+			Node thetaValue00 = thetaEntry.getElementsByTagName(THETA_VALUE_00).item(0);
+			_thetaVector[i][0][0] = Double.parseDouble(thetaValue00.getFirstChild().getNodeValue());
+			Node thetaValue01 = thetaEntry.getElementsByTagName(THETA_VALUE_01).item(0);
+			_thetaVector[i][0][1] = Double.parseDouble(thetaValue01.getFirstChild().getNodeValue());
+			Node thetaValue10 = thetaEntry.getElementsByTagName(THETA_VALUE_10).item(0);
+			_thetaVector[i][1][0] = Double.parseDouble(thetaValue10.getFirstChild().getNodeValue());
+			Node thetaValue11 = thetaEntry.getElementsByTagName(THETA_VALUE_11)	.item(0);
+			_thetaVector[i][1][1] = Double.parseDouble(thetaValue11.getFirstChild().getNodeValue());
 		}
 	}
 

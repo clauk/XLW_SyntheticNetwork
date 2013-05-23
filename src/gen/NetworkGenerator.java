@@ -38,6 +38,7 @@ public class NetworkGenerator {
 	public NetworkGenerator() {
 		_networkConfig = new NetworkConfig();
 		_nodeList = new LinkedList<Record>();
+		_edgeListMap = new HashMap<Long, LinkedList<Long>>();
 	}
 
 	public void generate() throws IOException, InterruptedException {
@@ -59,15 +60,10 @@ public class NetworkGenerator {
 		}
 	}
 
-	// TODO
-	// Put the generated node list to other servers
-	private void put() {
-
-	}
-
+	/*
+	 * @Parameter LinkedList type Record
+	 */
 	public void generateEdges(LinkedList<Record> targetNodeList) {
-		// TODO
-		
 		Iterator<Record> myIterator = _nodeList.iterator();
 		while (myIterator.hasNext()) {
 			Record myNode = myIterator.next();
@@ -76,6 +72,23 @@ public class NetworkGenerator {
 			Iterator<Record> targetIterator = targetNodeList.iterator();
 			while (targetIterator.hasNext()) {
 				Record targetNode = targetIterator.next();
+				if (checkEdges(myNode, targetNode))
+					ans.add(targetNode.userid);
+			}
+			_edgeListMap.put(myNode.userid, ans);
+		}
+	}
+	
+	/*
+	 * @Parameter array type Record
+	 */
+	public void generateEdges(Record targetNodeArray[]) {
+		Iterator<Record> myIterator = _nodeList.iterator();
+		while (myIterator.hasNext()) {
+			Record myNode = myIterator.next();
+			LinkedList<Long> ans = _edgeListMap.get(myNode.userid);
+			if(ans == null) ans = new LinkedList<Long>();			
+			for(Record targetNode : targetNodeArray){
 				if (checkEdges(myNode, targetNode))
 					ans.add(targetNode.userid);
 			}
