@@ -15,6 +15,7 @@ public class NetworkConfig extends Config {
 	private static final String NETWORK_PARAMETER = "NetworkParameter";
 	private static final String NODE_NUMBER = "nodeNum";
 	private static final String ATTRIBUTE_NUMBER = "attriNum";
+	private static final String START_ID = "startID";
 	private static final String MU_VECTOR = "mu";
 	private static final String MU_VALUE = "muValue";
 	private static final String THETA_VECTOR = "theta";
@@ -26,6 +27,7 @@ public class NetworkConfig extends Config {
 
 	private int _nodeNum;
 	private int _attributeNum;
+	private long _startID;
 	private Double[] _muVector;
 	private Double[][][] _thetaVector;
 
@@ -47,6 +49,8 @@ public class NetworkConfig extends Config {
 		_nodeNum = Integer.parseInt(nodeNum.getFirstChild().getNodeValue());
 		Node attriNum = networkParameter.getElementsByTagName(ATTRIBUTE_NUMBER).item(0);
 		_attributeNum = Integer.parseInt(attriNum.getFirstChild().getNodeValue());
+		Node startID = networkParameter.getElementsByTagName(START_ID).item(0);
+		_startID = Long.parseLong(attriNum.getFirstChild().getNodeValue());
 
 		_muVector = new Double[_attributeNum];
 		_thetaVector = new Double[_attributeNum][2][2];
@@ -85,6 +89,10 @@ public class NetworkConfig extends Config {
 
 	public Double[][][] getThetaVector() {
 		return _thetaVector;
+	}
+	
+	public long getStartID(){
+		return _startID;
 	}
 
 }

@@ -64,6 +64,7 @@ public class BarrierClientExample {
 					//System.out.println("Client #" + String.valueOf(serverID) + " is Waiting...");
 				
 			}
+			return;
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -44,7 +44,7 @@ public class ServerConfig extends Config {
 		_barrierInfo._serverIP = barrierIP.getFirstChild().getNodeValue();
 		Node barrierPort = barrierEntry.getElementsByTagName(PORT).item(0);
 		_barrierInfo._serverPort = barrierPort.getFirstChild().getNodeValue();
-		_barrierInfo._serverAddress = _barrierInfo._serverIP + ":" + _barrierInfo._serverPort;
+		_barrierInfo._serverAddress = "//"+_barrierInfo._serverIP + ":" + _barrierInfo._serverPort +"/Server";
 		
 		
 		//Retrieve distributed servers info
@@ -64,7 +64,7 @@ public class ServerConfig extends Config {
 			_serverInfoArray[i]._serverIP = serverIP.getFirstChild().getNodeValue();
 			Node serverPort = serverEntry.getElementsByTagName(PORT).item(0);
 			_serverInfoArray[i]._serverPort = serverPort.getFirstChild().getNodeValue();
-			_serverInfoArray[i]._serverAddress = _serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort;	
+			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/Server";	
 			
 			if(i == _serverID){
 				_localServerInfo._serverIP = _serverInfoArray[i]._serverIP;

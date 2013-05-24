@@ -3,8 +3,9 @@
 <NetworkConfig>
 	<NetworkParameter>
 	
-		<nodeNum>1000000</nodeNum>
-		<attriNum>16</attriNum>		
+		<nodeNum>1000</nodeNum>
+		<attriNum>16</attriNum>	
+		<startID>1</startID>		
 		<mu>
 			<muValue>0.5</muValue>
 			<muValue>0.5</muValue>

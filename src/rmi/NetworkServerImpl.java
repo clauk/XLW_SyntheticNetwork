@@ -36,12 +36,24 @@ public class NetworkServerImpl extends UnicastRemoteObject implements IServer {
 
 	@Override
 	public Record[] get(int cursorPos, int len) throws RemoteException {
-		Record[] records = new Record[len];
-		ListIterator<Record> cursorIterator = _networkGenerator.getNodeResult().listIterator(cursorPos);
-		for(int i=0; i<len; i++){
-			records[i] = cursorIterator.next();
+		int remainLen = _networkGenerator.getNodeResult().size() - cursorPos + 1;
+		if(remainLen <= 0)
+			return null;
+		else if(remainLen < len){
+			Record[] records = new Record[remainLen];
+			ListIterator<Record> cursorIterator = _networkGenerator.getNodeResult().listIterator(cursorPos);
+			for(int i=0; i<remainLen; i++){
+				records[i] = cursorIterator.next();
+			}
+			return records;
+		} else {
+			Record[] records = new Record[len];
+			ListIterator<Record> cursorIterator = _networkGenerator.getNodeResult().listIterator(cursorPos);
+			for(int i=0; i<len; i++){
+				records[i] = cursorIterator.next();
+			}
+			return records;	
 		}
-		return records;		
 	}
 
 	

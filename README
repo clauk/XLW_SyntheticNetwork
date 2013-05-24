@@ -33,3 +33,15 @@ Barrier running step:
 	java rmi.BarrierClientExample 1
 	java rmi.BarrierClientExample 2
 
+
+	
+MainEntry:
+
+- Barrier server:
+1.	rmiregistry &	--for Unix/Linux
+2.	rmic rmi.BarrierImpl
+3.	java rmi.BarrierExample [client #, no more than 10]
+
+- MainEntry client
+1.	rmic rmi.NetworkServerImpl
+2.	java gen.MainEntry

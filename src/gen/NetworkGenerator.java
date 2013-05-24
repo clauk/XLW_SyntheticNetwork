@@ -26,6 +26,7 @@ public class NetworkGenerator {
 	// Network Parameters
 	private int _n;
 	private int _k;
+	private long _startID;
 	private Double[] _mu;
 	private Double[][][] _theta;
 
@@ -39,18 +40,19 @@ public class NetworkGenerator {
 		_networkConfig = new NetworkConfig();
 		_nodeList = new LinkedList<Record>();
 		_edgeListMap = new HashMap<Long, LinkedList<Long>>();
+		setParameters();
 	}
 
-	public void generate() throws IOException, InterruptedException {
+	public void setParameters(){
 		_n = _networkConfig.getNodeNum();
 		_k = _networkConfig.getAttriNum();
 		_mu = _networkConfig.getMuVector();
 		_theta = _networkConfig.getThetaVector();
-
+		_startID = _networkConfig.getStartID();
 	}
 
 	public void generateNode() {
-		for (long i = 0; i < _n; i++) {
+		for (long i = _startID; i < _startID+_n; i++) {
 			Record _node = new Record(i, _k);
 			for (int j = 0; j < _k; j++) {
 				if (Math.random() <= _mu[j])
@@ -128,5 +130,13 @@ public class NetworkGenerator {
 	
 	public Map<Long, LinkedList<Long>> getEdgeResult(){
 		return _edgeListMap;
+	}
+	
+	public int getNodeNum(){
+		return _n;
+	}
+	
+	public int getAttriNum(){
+		return _k;
 	}
 }
