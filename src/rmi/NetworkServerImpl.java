@@ -36,7 +36,7 @@ public class NetworkServerImpl extends UnicastRemoteObject implements IServer {
 
 	@Override
 	public Record[] get(int cursorPos, int len) throws RemoteException {
-		int remainLen = _networkGenerator.getNodeResult().size() - cursorPos + 1;
+		int remainLen = _networkGenerator.getNodeResult().size() - cursorPos ;
 		if(remainLen <= 0)
 			return null;
 		else if(remainLen < len){

@@ -18,7 +18,9 @@ public class NetworkServerThread implements Runnable{
 			IServer server = new NetworkServerImpl(_networkGenerator);
 			Naming.rebind(_serverAddress, server);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(_serverAddress);
+			System.out.println("Bugs!");
 		}
 	}
 }

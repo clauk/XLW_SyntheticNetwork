@@ -36,6 +36,8 @@ Barrier running step:
 
 	
 MainEntry:
+ps -ef | grep rmiregistry
+kill
 
 - Barrier server:
 1.	rmiregistry &	--for Unix/Linux
@@ -43,5 +45,7 @@ MainEntry:
 3.	java rmi.BarrierExample [client #, no more than 10]
 
 - MainEntry client
+1.	rmiregistry &
 1.	rmic rmi.NetworkServerImpl
+2.	rmic rmi.BarrierImpl
 2.	java gen.MainEntry

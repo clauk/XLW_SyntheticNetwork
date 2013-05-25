@@ -61,7 +61,26 @@ public class NetworkGenerator {
 			_nodeList.add(_node);
 		}
 	}
-
+	
+	/*
+	 * @Parameter LinkedList type Record
+	 */
+	public void generateSelfEdges() {
+		Iterator<Record> myIterator = _nodeList.iterator();
+		while (myIterator.hasNext()) {
+			Record myNode = myIterator.next();
+			LinkedList<Long> ans = _edgeListMap.get(myNode.userid);
+			if(ans == null) ans = new LinkedList<Long>();
+			Iterator<Record> targetIterator = _nodeList.iterator();
+			while (targetIterator.hasNext()) {
+				Record targetNode = targetIterator.next();
+				if (checkEdges(myNode, targetNode))
+					ans.add(targetNode.userid);
+			}
+			_edgeListMap.put(myNode.userid, ans);
+		}
+	}
+	
 	/*
 	 * @Parameter LinkedList type Record
 	 */

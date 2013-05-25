@@ -3,7 +3,10 @@ package gen;
 import rmi.*;
 
 import java.rmi.Naming;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class MainEntry {
 		
@@ -22,16 +25,18 @@ public class MainEntry {
 		NetworkServerThread networkServerTh = new NetworkServerThread(networkGenerator, serverConfig.getLocalServerInfo()._serverAddress);
 		Thread networkServer = new Thread(networkServerTh); 
 		networkServer.start();
+		
 		System.out.println("Local Server Started!");
 		
 		
 		//check Barrier server to see if all finished
-		//BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID);
+		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID);
 		System.out.println("Barrier Connected!");
 		
 		//Call get method and compute edges
-		//use multi-thread to generateEdge? 
-		/*
+		//compute edges with local nodes
+		networkGenerator.generateSelfEdges();
+		//use multi-thread to get nodes from other servers and generateEdge
 		NetworkClientThread [] networkClientTh = new NetworkClientThread[serverNum];
 		Thread [] networkClient = new Thread[serverNum];
 		for(int i=0; i<serverNum; i++){
@@ -41,10 +46,9 @@ public class MainEntry {
 				networkClient[i].start();
 			}
 		}
-		*/		
+		
 		System.out.println("finish!");
-		
-		
+				
 		
 	}
 }

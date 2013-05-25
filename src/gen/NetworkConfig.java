@@ -50,7 +50,7 @@ public class NetworkConfig extends Config {
 		Node attriNum = networkParameter.getElementsByTagName(ATTRIBUTE_NUMBER).item(0);
 		_attributeNum = Integer.parseInt(attriNum.getFirstChild().getNodeValue());
 		Node startID = networkParameter.getElementsByTagName(START_ID).item(0);
-		_startID = Long.parseLong(attriNum.getFirstChild().getNodeValue());
+		_startID = Long.parseLong(startID.getFirstChild().getNodeValue());
 
 		_muVector = new Double[_attributeNum];
 		_thetaVector = new Double[_attributeNum][2][2];
