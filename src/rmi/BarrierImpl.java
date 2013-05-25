@@ -78,7 +78,22 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		}
 	}
 	
+	private boolean hasOutput = false;
+	
 	private void onFinished() throws IOException {
+		if (hasOutput) {
+			return;
+		}
+		hasOutput = true;
+		
+		Result test = new Result();
+		test.record = new Record(100, 5);
+		test.edgeList = new ArrayList<Long>();
+		test.edgeList.add((long) 2);
+		test.edgeList.add((long) 65);
+		test.edgeList.add((long) 45);
+		test.edgeList.add((long) 100);
+		results.add(test);
 		
 		Collections.sort(results, new Comparator<Result>() {
 

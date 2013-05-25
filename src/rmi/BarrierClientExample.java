@@ -16,10 +16,15 @@ public class BarrierClientExample {
 
 			/* Set serverID with argument */
 			int serverID;
-			if (args.length > 0)
+			String label = null;
+			if (args.length == 2) {
 				serverID = Integer.parseInt(args[0]);
-			else
+				label = args[1];
+			}
+			else {
 				serverID = 1;
+				label = "default";
+			}
 
 			while (true) {
 				System.out.println("into loop");
@@ -31,7 +36,7 @@ public class BarrierClientExample {
 					System.out.println("Sleep Exception");
 				}
 
-				int result = server.CheckBarrierStatus(serverID, "test label");
+				int result = server.CheckBarrierStatus(serverID, label);
 				if (result == 1) {
 					System.out.println("GOGOGO");
 					break;
