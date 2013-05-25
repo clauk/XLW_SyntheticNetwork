@@ -6,7 +6,7 @@ public class BarrierClientExample {
 
 	public static void main(String[] args) {
 		try {
-			BServer server = (BServer) Naming.lookup("//127.0.0.1:1099/Server");
+			BServer server = (BServer) Naming.lookup("//127.0.0.1:1099/BServer");
 
 			/* Set serverID with argument */
 			int serverID;
@@ -25,7 +25,7 @@ public class BarrierClientExample {
 					System.out.println("Sleep Exception");
 				}
 
-				int result = server.CheckBarrierStatus(serverID);
+				int result = server.CheckBarrierStatus(serverID, "test label");
 				if (result == 1) {
 					System.out.println("GOGOGO");
 					break;
@@ -40,7 +40,7 @@ public class BarrierClientExample {
 		}
 	}
 	
-	public static void BarrierClientListen(String barrierServer, int serverID){
+	public static void BarrierClientListen(String barrierServer, int serverID, String label){
 		try {
 			BServer server = (BServer) Naming.lookup(barrierServer);
 
@@ -55,7 +55,7 @@ public class BarrierClientExample {
 					//System.out.println("Sleep Exception");
 				}
 
-				int result = server.CheckBarrierStatus(serverID);
+				int result = server.CheckBarrierStatus(serverID, label);
 				if (result == 1) {
 					//System.out.println("GOGOGO");
 					break;

@@ -30,7 +30,7 @@ public class MainEntry {
 		
 		
 		//check Barrier server to see if all finished
-		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID);
+		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID, "test label");
 		System.out.println("Barrier Connected!");
 		
 		//Call get method and compute edges

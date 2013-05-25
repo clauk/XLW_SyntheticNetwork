@@ -44,7 +44,7 @@ public class ServerConfig extends Config {
 		_barrierInfo._serverIP = barrierIP.getFirstChild().getNodeValue();
 		Node barrierPort = barrierEntry.getElementsByTagName(PORT).item(0);
 		_barrierInfo._serverPort = barrierPort.getFirstChild().getNodeValue();
-		_barrierInfo._serverAddress = "//"+_barrierInfo._serverIP + ":" + _barrierInfo._serverPort +"/Server";
+		_barrierInfo._serverAddress = "//"+_barrierInfo._serverIP + ":" + _barrierInfo._serverPort +"/BServer";
 		
 		
 		//Retrieve distributed servers info

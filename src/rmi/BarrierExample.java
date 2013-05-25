@@ -6,9 +6,9 @@ public class BarrierExample {
 
 	public BarrierExample(int n) {
 		try {
-			BServer server = new BarrierImpl();
+			BarrierImpl server = new BarrierImpl();
 			server.SetServerNum(n);
-			Naming.rebind("//127.0.0.1:1099/Server", server);
+			Naming.rebind("//127.0.0.1:1099/BServer", server);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
