@@ -4,7 +4,7 @@
 	<NetworkParameter>
 	
 		<nodeNum>100</nodeNum>
-		<attriNum>16</attriNum>	
+		<attriNum>4</attriNum>	
 		<startID>101</startID>		
 		<mu>
 			<muValue>0.5</muValue>

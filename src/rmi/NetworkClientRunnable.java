@@ -8,11 +8,11 @@ import java.util.TreeMap;
 
 import gen.NetworkGenerator;
 
-public class NetworkClientThread  implements Runnable{
+public class NetworkClientRunnable  implements Runnable{
 	private NetworkGenerator _networkGenerator;
 	private String _serverAddress;
 	
-	public NetworkClientThread(NetworkGenerator networkGenerator, String serverAddress){
+	public NetworkClientRunnable(NetworkGenerator networkGenerator, String serverAddress){
 		_networkGenerator = networkGenerator;
 		_serverAddress = serverAddress;
 	}

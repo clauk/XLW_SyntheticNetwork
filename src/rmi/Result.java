@@ -1,9 +1,14 @@
 package rmi;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Result {
+public class Result implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1869779904245691367L;
 	public Record record;
 	public List<Long> edgeList;
 	
@@ -16,6 +21,9 @@ public class Result {
 		}
 		sb.append(")");
 		return sb.toString();
+	}
+	
+	public Result(){
 	}
 	
 	public Result(Record rec, List<Long> edgeL){

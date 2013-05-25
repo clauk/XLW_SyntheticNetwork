@@ -112,6 +112,8 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		pw.flush();
 		pw.close();
 		System.out.println("finish output " + results.size() + " records");
+		
+		System.exit(0);
 	}
 
 }

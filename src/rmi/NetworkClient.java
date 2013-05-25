@@ -8,6 +8,7 @@ public class NetworkClient {
 	
 	public NetworkClient(String serverAddress){
 		try {
+			System.out.println("lookup for: " + serverAddress);
 			_server = (IServer) Naming.lookup(serverAddress);
 		} catch (Exception e) {
 			e.printStackTrace();

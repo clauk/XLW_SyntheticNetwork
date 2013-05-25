@@ -25,9 +25,12 @@ public class ServerConfig extends Config {
 	private ServerInfo _barrierInfo = new ServerInfo();
 	private ServerInfo[] _serverInfoArray;
 
-	public ServerConfig() {
+
+	public ServerConfig(int serverID) {
 		super(Server_CONFIG_FILE);
+		_serverID = serverID;
 		loadConfig();
+		
 	}
 
 	protected void loadConfig() {
@@ -49,7 +52,7 @@ public class ServerConfig extends Config {
 		
 		//Retrieve distributed servers info
 		Node serverID = config.getElementsByTagName(SERVER_ID).item(0);
-		_serverID = Integer.parseInt(serverID.getFirstChild().getNodeValue());
+//		_serverID = Integer.parseInt(serverID.getFirstChild().getNodeValue());
 		
 		Node serverNum = config.getElementsByTagName(SERVER_NUM).item(0);
 		_serverNum = Integer.parseInt(serverNum.getFirstChild().getNodeValue());
@@ -64,7 +67,8 @@ public class ServerConfig extends Config {
 			_serverInfoArray[i]._serverIP = serverIP.getFirstChild().getNodeValue();
 			Node serverPort = serverEntry.getElementsByTagName(PORT).item(0);
 			_serverInfoArray[i]._serverPort = serverPort.getFirstChild().getNodeValue();
-			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/Server";	
+//			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/Server";
+			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/"+i; // TODO
 			
 			if(i == _serverID){
 				_localServerInfo._serverIP = _serverInfoArray[i]._serverIP;

@@ -26,7 +26,7 @@ public class NetworkGenerator {
 	// Network Parameters
 	private int _n;
 	private int _k;
-	private long _startID;
+//	private long _startID;
 	private Double[] _mu;
 	private Double[][][] _theta;
 
@@ -48,11 +48,11 @@ public class NetworkGenerator {
 		_k = _networkConfig.getAttriNum();
 		_mu = _networkConfig.getMuVector();
 		_theta = _networkConfig.getThetaVector();
-		_startID = _networkConfig.getStartID();
+//		_startID = _networkConfig.getStartID();
 	}
 
-	public void generateNode() {
-		for (long i = _startID; i < _startID+_n; i++) {
+	public void generateNode(long startID) {
+		for (long i = startID; i < startID+_n; i++) {
 			Record _node = new Record(i, _k);
 			for (int j = 0; j < _k; j++) {
 				if (Math.random() <= _mu[j])
