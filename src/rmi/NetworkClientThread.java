@@ -23,7 +23,7 @@ public class NetworkClientThread  implements Runnable{
 			
 			int nodeNum = _networkGenerator.getNodeNum();
 			int cursorPos = 0;
-			int fetchLen = 1000;
+			int fetchLen = Constants.FETCH_RECORD_BLOCK_SIZE;
 			
 			while(cursorPos <= nodeNum){
 				Record [] records = networkClient.getRecord(cursorPos, fetchLen);

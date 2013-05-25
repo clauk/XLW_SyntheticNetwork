@@ -17,4 +17,9 @@ public class Result {
 		sb.append(")");
 		return sb.toString();
 	}
+	
+	public Result(Record rec, List<Long> edgeL){
+		record = rec;
+		edgeList = edgeL;
+	}
 }

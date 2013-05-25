@@ -14,5 +14,5 @@ public interface BServer extends Remote {
 	public int CheckBarrierStatus(int serverID, String label) throws RemoteException;
 
 	public void putResults(Result[] results) throws RemoteException;
-	
+
 }

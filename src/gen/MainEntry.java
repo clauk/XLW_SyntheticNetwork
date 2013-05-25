@@ -18,10 +18,9 @@ public class MainEntry {
 		
 		NetworkGenerator networkGenerator = new NetworkGenerator();
 		networkGenerator.generateNode();
-		LinkedList<Record> nodeList = networkGenerator.getNodeResult();
+		System.out.println("Node Generated!");
 		
-		//Set-up Server
-		
+		//Set-up Server		
 		NetworkServerThread networkServerTh = new NetworkServerThread(networkGenerator, serverConfig.getLocalServerInfo()._serverAddress);
 		Thread networkServer = new Thread(networkServerTh); 
 		networkServer.start();
@@ -29,8 +28,8 @@ public class MainEntry {
 		System.out.println("Local Server Started!");
 		
 		
-		//check Barrier server to see if all finished
-		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID, "test label");
+		//check Barrier server to see if all Node generator finished
+		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID, Constants.GEN_NODE_BARRIER_LABEL);
 		System.out.println("Barrier Connected!");
 		
 		//Call get method and compute edges
@@ -47,7 +46,22 @@ public class MainEntry {
 			}
 		}
 		
-		System.out.println("finish!");
+		//Wait for all generateEdge threads finish 
+		for(int i=0; i<serverNum; i++){
+			try {
+				networkClient[i].join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
+		System.out.println("Edges Generated!");
+		
+		//Put results to server
+		BarrierClientExample.putResult(serverConfig.getBarrierInfo()._serverAddress, 
+				networkGenerator.getNodeResult(), networkGenerator.getEdgeResult(), Constants.PUT_RESULT_BLOCK_SIZE);
+		BarrierClientExample.finishPutResult(serverConfig.getBarrierInfo()._serverAddress, localServerID);
+		System.out.println("Edges Generated!");
 				
 		
 	}
