@@ -56,11 +56,19 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		if (ServerGetBarrier == ServerNum) {
 			if (Constants.FINISH_LABEL.equals(label)) {
 				// when finished, sort results
-				try {
-					onFinished();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						try {
+							onFinished();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}).start();
 			}
 			return 1;
 		}
@@ -86,15 +94,6 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		}
 		hasOutput = true;
 		
-		Result test = new Result();
-		test.record = new Record(100, 5);
-		test.edgeList = new ArrayList<Long>();
-		test.edgeList.add((long) 2);
-		test.edgeList.add((long) 65);
-		test.edgeList.add((long) 45);
-		test.edgeList.add((long) 100);
-		results.add(test);
-		
 		Collections.sort(results, new Comparator<Result>() {
 
 			@Override
@@ -113,7 +112,7 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		pw.close();
 		System.out.println("finish output " + results.size() + " records");
 		
-		System.exit(0);
+		
 	}
 
 }

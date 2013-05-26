@@ -70,14 +70,14 @@ public class MainEntry {
 			}
 		}
 		
-		System.out.println("Edges Generated!");
 		
 		//Put results to server
 		BarrierClientExample.putResult(serverConfig.getBarrierInfo()._serverAddress, 
 				networkGenerator.getNodeResult(), networkGenerator.getEdgeResult(), Constants.PUT_RESULT_BLOCK_SIZE);
-		BarrierClientExample.finishPutResult(serverConfig.getBarrierInfo()._serverAddress, localServerID);
+//		BarrierClientExample.finishPutResult(serverConfig.getBarrierInfo()._serverAddress, localServerID);
+		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID, Constants.FINISH_LABEL);
 		System.out.println("Put finish!");
 				
-		
+		System.exit(0);
 	}
 }
