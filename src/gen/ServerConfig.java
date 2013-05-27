@@ -68,9 +68,9 @@ public class ServerConfig extends Config {
 			Node serverPort = serverEntry.getElementsByTagName(PORT).item(0);
 			_serverInfoArray[i]._serverPort = serverPort.getFirstChild().getNodeValue();
 //			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/Server";
-//			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/"+i; // TODO
+			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/"+i; // TODO
 			
-			_serverInfoArray[i]._serverAddress = "//"+_barrierInfo._serverIP + ":" + _barrierInfo._serverPort+"/"+i;
+			//_serverInfoArray[i]._serverAddress = "//"+_barrierInfo._serverIP + ":" + _barrierInfo._serverPort+"/"+i;
 			
 			if(i == _serverID){
 				_localServerInfo._serverIP = _serverInfoArray[i]._serverIP;

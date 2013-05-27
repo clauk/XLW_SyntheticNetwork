@@ -34,7 +34,7 @@ public class MainEntry {
 		System.out.println("Node Generated!");
 		
 		//Set-up Server		
-		NetworkServerRunnable networkServerTh = new NetworkServerRunnable(networkGenerator, serverConfig.getLocalServerInfo()._serverAddress);
+		NetworkServerRunnable networkServerTh = new NetworkServerRunnable(networkGenerator, serverConfig.getLocalServerInfo());
 		Thread networkServer = new Thread(networkServerTh); 
 		networkServer.start();
 		
