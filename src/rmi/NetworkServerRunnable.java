@@ -19,9 +19,7 @@ public class NetworkServerRunnable implements Runnable{
 			System.out.println("rebind to: " + _serverAddress);
 			Naming.rebind(_serverAddress, server);
 		} catch (Exception e) {
-			//e.printStackTrace();
-			System.out.println(_serverAddress);
-			System.out.println("Bugs!");
+			e.printStackTrace();
 		}
 	}
 }

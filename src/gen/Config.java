@@ -2,6 +2,7 @@ package gen;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -23,9 +24,9 @@ public abstract class Config {
 	}
 
 	protected void readFile() {
-		FileInputStream file = null;
+		InputStream file = null;
 		try {
-			file = new FileInputStream(fileName);
+			file = getClass().getResourceAsStream("../"+fileName);
 			DocumentBuilderFactory factory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();

@@ -25,7 +25,7 @@ public class NetworkClientRunnable  implements Runnable{
 			int cursorPos = 0;
 			int fetchLen = Constants.FETCH_RECORD_BLOCK_SIZE;
 			
-			while(cursorPos <= nodeNum){
+			while(cursorPos < nodeNum){
 				Record [] records = networkClient.getRecord(cursorPos, fetchLen);
 				_networkGenerator.generateEdges(records);
 				cursorPos += fetchLen;
