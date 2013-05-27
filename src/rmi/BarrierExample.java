@@ -1,5 +1,7 @@
 package rmi;
 
+import gen.ServerConfig;
+
 import java.rmi.Naming;
 
 public class BarrierExample {
@@ -8,7 +10,10 @@ public class BarrierExample {
 		try {
 			BarrierImpl server = new BarrierImpl();
 			server.SetServerNum(n);
-			Naming.rebind("//127.0.0.1:1099/BServer", server);
+			ServerConfig serverConfig = new ServerConfig(0);
+			String bindAddr = serverConfig.getBarrierInfo()._serverAddress;
+			System.out.println("barrier try to bind to: " + bindAddr);
+			Naming.rebind(bindAddr, server);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
