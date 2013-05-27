@@ -1,4 +1,15 @@
 
+# compile
+rm -rf bin
+mkdir bin
+
+javac -d bin src/gen/*.java src/rmi/*.java
+cp NetworkConfig.xml bin/NetworkConfig.xml
+cp ServerConfig.xml bin/ServerConfig.xml
+
+
+# gen jar
+
 cd bin
 
 if [ -f "../server.jar" ]
@@ -14,6 +25,6 @@ fi
 rmic rmi.NetworkServerImpl
 rmic rmi.BarrierImpl
 
-jar cvfe ../server.jar gen.MainEntry gen/* rmi/* NetworkConfig.xml ServerConfig.xml
-jar cvfe ../barrier.jar rmi.BarrierExample gen/* rmi/* NetworkConfig.xml ServerConfig.xml
+jar cfe ../server.jar gen.MainEntry gen/* rmi/* NetworkConfig.xml ServerConfig.xml
+jar cfe ../barrier.jar rmi.BarrierExample gen/* rmi/* NetworkConfig.xml ServerConfig.xml
 cd ..

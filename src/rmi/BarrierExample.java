@@ -1,6 +1,10 @@
 package rmi;
 
+import gen.ServerConfig;
+
 import java.rmi.Naming;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 public class BarrierExample {
 
@@ -8,7 +12,16 @@ public class BarrierExample {
 		try {
 			BarrierImpl server = new BarrierImpl();
 			server.SetServerNum(n);
-			Naming.rebind("//127.0.0.1:1099/BServer", server);
+			ServerConfig serverConfig = new ServerConfig(0);
+			
+			int rmiPort = Integer.parseInt(serverConfig.getBarrierInfo()._serverPort);
+			Registry registry = LocateRegistry.createRegistry(rmiPort);
+			System.out.println("created registry at port: " + rmiPort);
+			
+			String bindAddr = serverConfig.getBarrierInfo()._serverAddress;
+			System.out.println("barrier try to bind to: " + bindAddr);
+			
+			Naming.rebind(bindAddr, server);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
