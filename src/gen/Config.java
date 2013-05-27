@@ -24,9 +24,9 @@ public abstract class Config {
 	}
 
 	protected void readFile() {
-		InputStream file = null;
+		FileInputStream file = null;
 		try {
-			file = getClass().getResourceAsStream("../"+fileName);
+			file = new FileInputStream(fileName);
 			DocumentBuilderFactory factory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
