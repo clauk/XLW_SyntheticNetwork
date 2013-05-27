@@ -1,5 +1,6 @@
 ./gen-jar.sh
 ps aux |grep java | grep barrier|awk '{print $2}'|xargs kill -9
+rm results
 
 java -jar barrier.jar 3 & # listen at localhost:1099/BServer, 3 means number of servers in the system
 sleep 2
