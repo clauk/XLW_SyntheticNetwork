@@ -1,4 +1,15 @@
 
+# compile
+rm -rf bin
+mkdir bin
+
+javac -d bin src/gen/*.java src/rmi/*.java
+cp NetworkConfig.xml bin/NetworkConfig.xml
+cp ServerConfig.xml bin/ServerConfig.xml
+
+
+# gen jar
+
 cd bin
 
 if [ -f "../server.jar" ]
