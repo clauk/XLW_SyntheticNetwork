@@ -25,6 +25,6 @@ fi
 rmic rmi.NetworkServerImpl
 rmic rmi.BarrierImpl
 
-jar cvfe ../server.jar gen.MainEntry gen/* rmi/* NetworkConfig.xml ServerConfig.xml
-jar cvfe ../barrier.jar rmi.BarrierExample gen/* rmi/* NetworkConfig.xml ServerConfig.xml
+jar cfe ../server.jar gen.MainEntry gen/* rmi/* NetworkConfig.xml ServerConfig.xml
+jar cfe ../barrier.jar rmi.BarrierExample gen/* rmi/* NetworkConfig.xml ServerConfig.xml
 cd ..
