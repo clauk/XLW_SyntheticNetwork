@@ -11,7 +11,6 @@ import org.w3c.dom.NodeList;
 
 public class ServerConfig extends Config {
 	private static final String Server_CONFIG_FILE = "ServerConfig.xml";
-	private static final String SERVER_ID = "ServerID";
 	private static final String BARRIER_ENTRY = "BarrierEntry";
 	private static final String SERVER_ENTRY = "ServerEntry";
 	private static final String IP = "ip";
@@ -50,10 +49,7 @@ public class ServerConfig extends Config {
 		_barrierInfo._serverAddress = "//"+_barrierInfo._serverIP + ":" + _barrierInfo._serverPort +"/BServer";
 		
 		
-		//Retrieve distributed servers info
-		Node serverID = config.getElementsByTagName(SERVER_ID).item(0);
-//		_serverID = Integer.parseInt(serverID.getFirstChild().getNodeValue());
-		
+		//Retrieve distributed servers info		
 		Node serverNum = config.getElementsByTagName(SERVER_NUM).item(0);
 		_serverNum = Integer.parseInt(serverNum.getFirstChild().getNodeValue());
 		
@@ -68,7 +64,7 @@ public class ServerConfig extends Config {
 			Node serverPort = serverEntry.getElementsByTagName(PORT).item(0);
 			_serverInfoArray[i]._serverPort = serverPort.getFirstChild().getNodeValue();
 //			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/Server";
-			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/"+i; // TODO
+			_serverInfoArray[i]._serverAddress = "//"+_serverInfoArray[i]._serverIP + ":" + _serverInfoArray[i]._serverPort+"/"+i; 
 			
 			//_serverInfoArray[i]._serverAddress = "//"+_barrierInfo._serverIP + ":" + _barrierInfo._serverPort+"/"+i;
 			

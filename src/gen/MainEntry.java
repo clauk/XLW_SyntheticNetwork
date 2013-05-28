@@ -29,8 +29,8 @@ public class MainEntry {
 		long startRecordID = Long.parseLong(args[1]);
 		int serverNum = serverConfig.getServerNum();
 		
-		NetworkGenerator networkGenerator = new NetworkGenerator();
-		networkGenerator.generateNode(startRecordID);
+		NetworkGenerator networkGenerator = new NetworkGenerator(localServerID, startRecordID);
+		networkGenerator.generateNode();
 		System.out.println("Node Generated!");
 		
 		//Set-up Server		

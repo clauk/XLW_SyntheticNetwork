@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -106,7 +107,12 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		// write to file
 		PrintWriter pw = new PrintWriter("results");
 		for (Result r : results) {
-			pw.println(r.toString());
+			Long id = r.record.userid;
+			Iterator<Long> edgesIterator = r.edgeList.iterator();
+			while(edgesIterator.hasNext()){
+				pw.println(id + "	" +edgesIterator.next());
+			}
+			//pw.println(r.toString());
 		}
 		pw.flush();
 		pw.close();

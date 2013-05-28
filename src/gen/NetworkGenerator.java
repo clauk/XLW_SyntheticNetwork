@@ -25,9 +25,10 @@ public class NetworkGenerator {
 	// Network Parameters
 	private int _n;
 	private int _k;
-//	private long _startID;
+	private long _startID;
 	private Double[] _mu;
 	private Double[][][] _theta;
+	private Random randomProb;
 
 	// Network Nodes
 	private LinkedList<Record> _nodeList;
@@ -35,10 +36,12 @@ public class NetworkGenerator {
 	// Network Edges Result
 	private Map<Long, LinkedList<Long>> _edgeListMap;
 
-	public NetworkGenerator() {
+	public NetworkGenerator(int localServerID, long startRecordID) {
 		_networkConfig = new NetworkConfig();
 		_nodeList = new LinkedList<Record>();
 		_edgeListMap = new HashMap<Long, LinkedList<Long>>();
+		_startID = startRecordID;
+		randomProb = new Random(_startID);
 		setParameters();
 	}
 
@@ -47,14 +50,13 @@ public class NetworkGenerator {
 		_k = _networkConfig.getAttriNum();
 		_mu = _networkConfig.getMuVector();
 		_theta = _networkConfig.getThetaVector();
-//		_startID = _networkConfig.getStartID();
 	}
 
-	public void generateNode(long startID) {
-		for (long i = startID; i < startID+_n; i++) {
+	public void generateNode() {
+		for (long i = _startID; i < _startID+_n; i++) {
 			Record _node = new Record(i, _k);
 			for (int j = 0; j < _k; j++) {
-				if (Math.random() <= _mu[j])
+				if (randomProb.nextDouble() > _mu[j])
 					_node.attributes[j] = true;
 			}
 			_nodeList.add(_node);
@@ -121,7 +123,7 @@ public class NetworkGenerator {
 				}					
 			}
 		}
-		if (Math.random() <= prob)
+		if (randomProb.nextDouble() <= prob)
 			return true;
 		else
 			return false;
