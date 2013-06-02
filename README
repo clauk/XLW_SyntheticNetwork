@@ -6,7 +6,7 @@ current config: (check out ServerConfig.xml)
 
 about dist-run-all.sh
 - change JAR_PATH
-- before run it, ssh manully from 74 to all other machines, this only need to done once
+- before run it, manully setup passwordless ssh from 74 to all other machines, this only need to done once
 
 run:
 ./dist-run-all.sh
@@ -19,6 +19,18 @@ change config
 ./local-run-all.sh
 
 check results file
+
+
+SSH
+========================================
+If you want to setup SSH keys to allow logging in without a password, you can do so with a single command.
+
+The first thing you'll need to do is make sure you've run the keygen command to generate the keys:
+
+ssh-keygen -t rsa
+Then use this command to push the key to the remote server, modifying it to match your server name.
+
+cat ~/.ssh/id_rsa.pub | ssh user@hostname 'cat >> .ssh/authorized_keys'
 
 OLD
 =========================================

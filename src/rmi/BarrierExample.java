@@ -7,6 +7,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class BarrierExample {
+	
 
 	public BarrierExample(int n) {
 		try {

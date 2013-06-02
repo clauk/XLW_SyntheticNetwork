@@ -27,11 +27,16 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 	private Map<String, boolean[]> statusMap;
 	private List<Result> results;
 	
+	private long startTime;
+	private long endTime;
+	private long runTime;
+		
 	protected BarrierImpl() throws RemoteException {
 		super();
 		statusMap = new HashMap<String, boolean[]>();
 		ServerGetBarrierMap = new HashMap<String, Integer>();
 		results = new ArrayList<Result>();
+		startTime = System.currentTimeMillis();
 	}
 	
 	public void SetServerNum(int n) {
@@ -94,7 +99,7 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 			return;
 		}
 		hasOutput = true;
-		
+		/*
 		Collections.sort(results, new Comparator<Result>() {
 
 			@Override
@@ -103,12 +108,14 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 			}
 		});
 		System.out.println("finish sorting " + results.size() + " records");
-		
+		*/
+		long totalEdgeNum = 0;
 		// write to file
 		PrintWriter pw = new PrintWriter("results");
 		for (Result r : results) {
 			Long id = r.record.userid;
 			Iterator<Long> edgesIterator = r.edgeList.iterator();
+			totalEdgeNum += r.edgeList.size();
 			while(edgesIterator.hasNext()){
 				pw.println(id + "	" +edgesIterator.next());
 			}
@@ -116,8 +123,10 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		}
 		pw.flush();
 		pw.close();
-		System.out.println("finish output " + results.size() + " records");
-		
+		System.out.println("finish output " + results.size() + " records, "+ totalEdgeNum +"edges.");
+		endTime = System.currentTimeMillis();
+		runTime = (endTime - startTime)/1000;
+		System.out.println("Network Generator Runtime: " + runTime);
 		
 	}
 

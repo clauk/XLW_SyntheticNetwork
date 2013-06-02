@@ -30,16 +30,16 @@ public class NetworkConfig extends Config {
 	private long _startID;
 	private Double[] _muVector;
 	private Double[][][] _thetaVector;
-
-	public NetworkConfig() {
+	
+	public NetworkConfig(long nodeStartID) {
 		super(Network_CONFIG_FILE);
+		_startID = nodeStartID;
 		loadConfig();
 	}
 
 	protected void loadConfig() {
 		readFile();
 		loadNetworkParameter();
-
 	}
 
 	private void loadNetworkParameter() {
@@ -49,8 +49,6 @@ public class NetworkConfig extends Config {
 		_nodeNum = Integer.parseInt(nodeNum.getFirstChild().getNodeValue());
 		Node attriNum = networkParameter.getElementsByTagName(ATTRIBUTE_NUMBER).item(0);
 		_attributeNum = Integer.parseInt(attriNum.getFirstChild().getNodeValue());
-		Node startID = networkParameter.getElementsByTagName(START_ID).item(0);
-		_startID = Long.parseLong(startID.getFirstChild().getNodeValue());
 
 		_muVector = new Double[_attributeNum];
 		_thetaVector = new Double[_attributeNum][2][2];

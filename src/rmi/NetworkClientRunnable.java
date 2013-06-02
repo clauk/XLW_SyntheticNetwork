@@ -31,7 +31,7 @@ public class NetworkClientRunnable  implements Runnable{
 				cursorPos += fetchLen;
 			}
 			
-			
+			/*
 			//TODO
 			//just for check, remove this
 			Map<Long, LinkedList<Long>> edgeListMap = _networkGenerator.getEdgeResult();
@@ -50,6 +50,7 @@ public class NetworkClientRunnable  implements Runnable{
 			    }
 			    System.out.println();
 			}
+			*/
 			
 		} catch (Exception e) {
 			e.printStackTrace();

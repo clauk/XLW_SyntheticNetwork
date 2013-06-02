@@ -24,7 +24,6 @@ public class MainEntry {
 		}
 		int localServerID = Integer.parseInt(args[0]);
 		ServerConfig serverConfig = new ServerConfig(localServerID);
-//		int localServerID = serverConfig.getServerID();
 		
 		long startRecordID = Long.parseLong(args[1]);
 		int serverNum = serverConfig.getServerNum();
@@ -47,7 +46,11 @@ public class MainEntry {
 		
 		//Call get method and compute edges
 		//compute edges with local nodes
+		long startTime = System.currentTimeMillis();
 		networkGenerator.generateSelfEdges();
+		long endTime = System.currentTimeMillis();
+		long runTime = (endTime - startTime)/1000;
+		System.out.println("Network Generator Runtime: " + runTime);
 		//use multi-thread to get nodes from other servers and generateEdge
 		NetworkClientRunnable [] networkClientRunnable = new NetworkClientRunnable[serverNum];
 		
@@ -74,7 +77,6 @@ public class MainEntry {
 		//Put results to server
 		BarrierClientExample.putResult(serverConfig.getBarrierInfo()._serverAddress, 
 				networkGenerator.getNodeResult(), networkGenerator.getEdgeResult(), Constants.PUT_RESULT_BLOCK_SIZE);
-//		BarrierClientExample.finishPutResult(serverConfig.getBarrierInfo()._serverAddress, localServerID);
 		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID, Constants.FINISH_LABEL);
 		System.out.println("Put finish!");
 				

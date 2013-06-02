@@ -3,77 +3,83 @@
 <NetworkConfig>
 	<NetworkParameter>
 	
-		<nodeNum>100</nodeNum>
-		<attriNum>4</attriNum>	
-		<startID>101</startID>		
+		<nodeNum>16384</nodeNum>
+		<attriNum>12</attriNum>			
 		<mu>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
-			<muValue>0.5</muValue>
+			<muValue>0.60</muValue>
+			<muValue>0.35</muValue>
+			<muValue>0.25</muValue>
+			<muValue>0.15</muValue>
+			<muValue>0.65</muValue>
+			<muValue>0.10</muValue>
+			<muValue>0.55</muValue>
+			<muValue>0.55</muValue>
+			<muValue>0.40</muValue>
+			<muValue>0.60</muValue>
+			<muValue>0.35</muValue>
+			<muValue>0.25</muValue>
+			<muValue>0.15</muValue>
+			<muValue>0.65</muValue>
+			<muValue>0.10</muValue>
+			<muValue>0.55</muValue>
+			<muValue>0.55</muValue>
+			<muValue>0.40</muValue>
 		</mu>		
 		<theta>
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.0432</thetaValue01> <thetaValue10>0.0505</thetaValue10> <thetaValue11>0.9999</thetaValue11>
 			</thetaEntry>			
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.1506</thetaValue11>
 			</thetaEntry>			
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.2803</thetaValue11>
 			</thetaEntry>			
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.2833</thetaValue11>
 			</thetaEntry>			
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.0476</thetaValue01> <thetaValue10>0.0563</thetaValue10> <thetaValue11>0.9999</thetaValue11>
 			</thetaEntry>			
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.1319</thetaValue11>
 			</thetaEntry>
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.1246</thetaValue01> <thetaValue10>0.1402</thetaValue10> <thetaValue11>0.9999</thetaValue11>
 			</thetaEntry>			
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.1186</thetaValue01> <thetaValue10>0.1364</thetaValue10> <thetaValue11>0.9999</thetaValue11>
 			</thetaEntry>			
 			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
-			</thetaEntry>			
-			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
-			</thetaEntry>			
-			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
-			</thetaEntry>			
-			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
-			</thetaEntry>			
-			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
-			</thetaEntry>			
-			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
-			</thetaEntry>			
-			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
-			</thetaEntry>			
-			<thetaEntry>
-				<thetaValue00>0.5</thetaValue00> <thetaValue01>0.5</thetaValue01> <thetaValue10>0.5</thetaValue10> <thetaValue11>0.5</thetaValue11>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.1757</thetaValue01> <thetaValue10>0.1535</thetaValue10> <thetaValue11>0.9999</thetaValue11>
 			</thetaEntry>
-			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.0432</thetaValue01> <thetaValue10>0.0505</thetaValue10> <thetaValue11>0.9999</thetaValue11>
+			</thetaEntry>			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.1506</thetaValue11>
+			</thetaEntry>			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.2803</thetaValue11>
+			</thetaEntry>			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.2833</thetaValue11>
+			</thetaEntry>			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.0476</thetaValue01> <thetaValue10>0.0563</thetaValue10> <thetaValue11>0.9999</thetaValue11>
+			</thetaEntry>			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.9999</thetaValue01> <thetaValue10>0.9999</thetaValue10> <thetaValue11>0.1319</thetaValue11>
+			</thetaEntry>
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.1246</thetaValue01> <thetaValue10>0.1402</thetaValue10> <thetaValue11>0.9999</thetaValue11>
+			</thetaEntry>			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.1186</thetaValue01> <thetaValue10>0.1364</thetaValue10> <thetaValue11>0.9999</thetaValue11>
+			</thetaEntry>			
+			<thetaEntry>
+				<thetaValue00>0.9999</thetaValue00> <thetaValue01>0.1757</thetaValue01> <thetaValue10>0.1535</thetaValue10> <thetaValue11>0.9999</thetaValue11>
+			</thetaEntry>			
 		</theta>
 	</NetworkParameter>
 

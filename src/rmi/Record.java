@@ -6,6 +6,7 @@ public class Record implements Serializable {
 
 	public long userid;
 	public boolean[] attributes;
+	public int[] attribute_blocks;
 	
 	/**
 	 * 
@@ -14,9 +15,10 @@ public class Record implements Serializable {
 
 	public Record(){}
 	
-	public Record(long uID, int attributeNum){
+	public Record(long uID, int attributeNum, int attributeBlockNum){
 		userid = uID;
 		attributes = new boolean[attributeNum];
+		attribute_blocks = new int[attributeBlockNum];
 	}
 	
 	public String toString() {

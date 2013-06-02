@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <ServerConfig>	
 	<ServerID>1</ServerID>
-	<ServerNum>3</ServerNum>
+	<ServerNum>4</ServerNum>
 	<!--<BarrierEntry><ip>127.0.0.1</ip><port>1097</port></BarrierEntry>-->
-	<BarrierEntry><ip>sysnet74.sysnet.ucsd.edu</ip><port>1097</port></BarrierEntry>
-	<ServerEntry><ip>sysnet76.sysnet.ucsd.edu</ip><port>1097</port></ServerEntry>
-	<ServerEntry><ip>sysnet86.sysnet.ucsd.edu</ip><port>1097</port></ServerEntry>
-	<ServerEntry><ip>sysnet89.sysnet.ucsd.edu</ip><port>1097</port></ServerEntry>
+	<BarrierEntry><ip>compute-0-10.local</ip><port>1040</port></BarrierEntry>
+	<ServerEntry><ip>compute-0-11.local</ip><port>1041</port></ServerEntry>
+	<ServerEntry><ip>compute-0-12.local</ip><port>1042</port></ServerEntry>
+	<ServerEntry><ip>compute-0-13.local</ip><port>1043</port></ServerEntry>
+	<ServerEntry><ip>compute-0-14.local</ip><port>1044</port></ServerEntry>
 </ServerConfig>
