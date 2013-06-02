@@ -29,7 +29,9 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 	
 	private long startTime;
 	private long endTime;
-	private long runTime;
+	
+	private Map<String, Long> reachBarrierTime;
+	private Long startPutTime;
 		
 	protected BarrierImpl() throws RemoteException {
 		super();
@@ -37,6 +39,7 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		ServerGetBarrierMap = new HashMap<String, Integer>();
 		results = new ArrayList<Result>();
 		startTime = System.currentTimeMillis();
+		reachBarrierTime = new HashMap<String, Long>();
 	}
 	
 	public void SetServerNum(int n) {
@@ -57,6 +60,9 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 			ServerGetBarrier++;
 			ServerGetBarrierMap.put(label, ServerGetBarrier);
 			status[serverID] = true;
+			if (ServerGetBarrier >= ServerNum) {
+				reachBarrierTime.put(label, System.currentTimeMillis());
+			}
 		}
 
 		if (ServerGetBarrier == ServerNum) {
@@ -70,7 +76,6 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 						try {
 							onFinished();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -87,6 +92,9 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 
 	@Override
 	synchronized public void putResults(Result[] results) throws RemoteException {
+		if (startPutTime == null) {
+			startPutTime = System.currentTimeMillis();
+		}
 		for (Result r : results) {
 			this.results.add(r);
 		}
@@ -125,9 +133,15 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		pw.close();
 		System.out.println("finish output " + results.size() + " records, "+ totalEdgeNum +"edges.");
 		endTime = System.currentTimeMillis();
-		runTime = (endTime - startTime)/1000;
+		long runTime = (endTime - startTime)/1000;
 		System.out.println("Network Generator Runtime: " + runTime);
-		
+		System.out.println("===============");
+		System.out.println("Start running at: " + startTime);
+		for (String label: reachBarrierTime.keySet()) {
+			System.out.println("reach " + label + " at: " + reachBarrierTime.get(label));
+		}
+		System.out.println("Start putResult at: " + startPutTime);
+		System.out.println("Finish running at: " + endTime);
 	}
 
 }
