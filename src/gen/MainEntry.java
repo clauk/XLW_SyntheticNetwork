@@ -22,6 +22,19 @@ public class MainEntry {
 			System.out.println("param error");
 			return;
 		}
+		
+		long startTime;
+		long endTime;
+		long genNodeTime;
+		long genLocalEdgeTime;
+		long genRemoteEdgeTime;
+		long putResultTime;
+		long overallStartTime;
+		long overallEndTime;
+		long overallTime;
+		
+		overallStartTime = System.currentTimeMillis();
+		
 		int localServerID = Integer.parseInt(args[0]);
 		ServerConfig serverConfig = new ServerConfig(localServerID);
 		
@@ -29,7 +42,10 @@ public class MainEntry {
 		int serverNum = serverConfig.getServerNum();
 		
 		NetworkGenerator networkGenerator = new NetworkGenerator(localServerID, startRecordID);
+		startTime = System.currentTimeMillis();
 		networkGenerator.generateNode();
+		endTime = System.currentTimeMillis();
+		genNodeTime = (endTime - startTime)/1000;
 		System.out.println("Node Generated!");
 		
 		//Set-up Server		
@@ -46,14 +62,15 @@ public class MainEntry {
 		
 		//Call get method and compute edges
 		//compute edges with local nodes
-		long startTime = System.currentTimeMillis();
+		startTime = System.currentTimeMillis();
 		networkGenerator.generateSelfEdges();
-		long endTime = System.currentTimeMillis();
-		long runTime = (endTime - startTime)/1000;
-		System.out.println("Network Generator Runtime: " + runTime);
-		//use multi-thread to get nodes from other servers and generateEdge
-		NetworkClientRunnable [] networkClientRunnable = new NetworkClientRunnable[serverNum];
+		endTime = System.currentTimeMillis();
+		genLocalEdgeTime = (endTime - startTime)/1000;
+		System.out.println("Local Edge Generated!");
 		
+		//use multi-thread to get nodes from other servers and generateEdge
+		startTime = System.currentTimeMillis();
+		NetworkClientRunnable [] networkClientRunnable = new NetworkClientRunnable[serverNum];
 		List<Thread> networkClient = new ArrayList<Thread>();
 		for(int i=0; i<serverNum; i++){
 			if(i!=localServerID){
@@ -62,8 +79,7 @@ public class MainEntry {
 				thread.start();
 				networkClient.add(thread);
 			}
-		}
-		
+		}		
 		//Wait for all generateEdge threads finish 
 		for (Thread thread : networkClient) {
 			try {
@@ -72,13 +88,28 @@ public class MainEntry {
 				e.printStackTrace();
 			}
 		}
-		
+		endTime = System.currentTimeMillis();
+		genRemoteEdgeTime = (endTime - startTime)/1000;
+		System.out.println("Remote Edge Generated!");
 		
 		//Put results to server
+		startTime = System.currentTimeMillis();
 		BarrierClientExample.putResult(serverConfig.getBarrierInfo()._serverAddress, 
 				networkGenerator.getNodeResult(), networkGenerator.getEdgeResult(), Constants.PUT_RESULT_BLOCK_SIZE);
 		BarrierClientExample.BarrierClientListen(serverConfig.getBarrierInfo()._serverAddress, localServerID, Constants.FINISH_LABEL);
-		System.out.println("Put finish!");
+		endTime = System.currentTimeMillis();
+		putResultTime = (endTime - startTime)/1000;
+		System.out.println("Put Result finish!");
+
+		overallEndTime = System.currentTimeMillis();
+		overallTime = (overallEndTime - overallStartTime)/1000;
+
+		System.out.println("==============================================");
+		System.out.println("Generate Node Time: " + genNodeTime);
+		System.out.println("Generate Local Edge Time: " + genLocalEdgeTime);
+		System.out.println("Generate Remote Edge Time: " + genRemoteEdgeTime);
+		System.out.println("Put Result Time: " + putResultTime);
+		System.out.println("Server Overall Running Time: " + overallTime);
 				
 		System.exit(0);
 	}
