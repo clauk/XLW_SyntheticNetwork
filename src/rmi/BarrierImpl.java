@@ -136,12 +136,12 @@ public class BarrierImpl extends UnicastRemoteObject implements BServer {
 		long runTime = (endTime - startTime)/1000;
 		System.out.println("Network Generator Runtime: " + runTime);
 		System.out.println("===============");
-		System.out.println("Start running at: " + startTime);
+		System.out.println("Start running at: " + startTime/1000);
 		for (String label: reachBarrierTime.keySet()) {
-			System.out.println("reach " + label + " at: " + reachBarrierTime.get(label));
+			System.out.println("reach " + label + " at: " + (reachBarrierTime.get(label) - startTime )/1000);
 		}
-		System.out.println("Start putResult at: " + startPutTime);
-		System.out.println("Finish running at: " + endTime);
+		System.out.println("Start putResult at: " + (startPutTime -startTime )/1000);
+		System.out.println("Finish running at: " + (endTime - startTime)/1000);
 	}
 
 }
