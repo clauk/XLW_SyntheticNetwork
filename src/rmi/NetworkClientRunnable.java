@@ -24,12 +24,19 @@ public class NetworkClientRunnable  implements Runnable{
 			int nodeNum = _networkGenerator.getNodeNum();
 			int cursorPos = 0;
 			int fetchLen = Constants.FETCH_RECORD_BLOCK_SIZE;
-			
+			long totalTime = 0, startTime, endTime;
 			while(cursorPos < nodeNum){
+				startTime = System.currentTimeMillis();
 				Record [] records = networkClient.getRecord(cursorPos, fetchLen);
+				endTime = System.currentTimeMillis();
+				totalTime += (endTime - startTime);
 				_networkGenerator.generateEdges(records);
 				cursorPos += fetchLen;
 			}
+			System.out.println("Total Time on getRecord: "+totalTime +" ms");
+			System.out.println("Total Node Num: " +nodeNum);
+			System.out.println("Pagesize: " +fetchLen);
+			System.out.println("Total Operation Num: " +(nodeNum+fetchLen-1)/fetchLen);
 			
 			/*
 			//TODO

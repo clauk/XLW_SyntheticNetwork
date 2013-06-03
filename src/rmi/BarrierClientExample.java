@@ -89,13 +89,17 @@ public class BarrierClientExample {
 			Result [] results = new Result[blockSize];
 			int remainLen = records.size();
 			ListIterator<Record> cursorIterator = records.listIterator();
+			long totalTime = 0, startTime, endTime;
 			while(remainLen > 0){
 				if(remainLen >= blockSize){
 					for(int i=0; i<blockSize; i++){
 						Record node = cursorIterator.next();
 						results[i] = new Result( node, edgeListMap.get(node.userid));
 					}
+					startTime = System.currentTimeMillis();
 					server.putResults(results);
+					endTime = System.currentTimeMillis();
+					totalTime += (endTime - startTime);
 					remainLen -= blockSize;
 				}
 				else if(remainLen > 0){
@@ -104,10 +108,17 @@ public class BarrierClientExample {
 						Record node = cursorIterator.next();
 						results[i] = new Result( node, edgeListMap.get(node.userid));
 					}
+					startTime = System.currentTimeMillis();
 					server.putResults(results);
+					endTime = System.currentTimeMillis();
+					totalTime += (endTime - startTime);
 					remainLen = 0;
 				}
-			}			
+			}
+			System.out.println("Total Time on putResults: "+totalTime +" ms");
+			System.out.println("Total Node Num: " +records.size());
+			System.out.println("Pagesize: " +blockSize);
+			System.out.println("Total putResult Operation Num: " +(records.size()+blockSize-1)/blockSize);			
 						
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
