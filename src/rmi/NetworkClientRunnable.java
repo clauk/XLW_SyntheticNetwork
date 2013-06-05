@@ -3,6 +3,7 @@ package rmi;
 import gen.*;
 
 import java.rmi.Naming;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class NetworkClientRunnable  implements Runnable{
 		try {
 			NetworkClient networkClient = new NetworkClient(_serverAddress);
 			LinkedList<Record> nodeList = new LinkedList<Record>(_networkGenerator.getNodeResult());
-			
+			Map<Long, LinkedList<Long>> edgeListMap = new HashMap<Long, LinkedList<Long>>(_networkGenerator.getEdgeResult());
 			int nodeNum = _networkGenerator.getNodeNum();
 			int cursorPos = 0;
 			int fetchLen = Constants.FETCH_RECORD_BLOCK_SIZE;
@@ -33,7 +34,7 @@ public class NetworkClientRunnable  implements Runnable{
 				endTime = System.currentTimeMillis();
 				totalTime += (endTime - startTime);
 				startTime = System.currentTimeMillis();
-				_networkGenerator.generateEdges(records, nodeList);
+				_networkGenerator.generateEdges(records, nodeList, edgeListMap);
 				endTime = System.currentTimeMillis();
 				edgeTime += (endTime - startTime); 
 				cursorPos += fetchLen;

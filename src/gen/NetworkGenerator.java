@@ -194,7 +194,7 @@ public class NetworkGenerator {
 	/*
 	 * @Parameter array type Record
 	 */
-	public void generateEdges(Record targetNodeArray[], LinkedList<Record> nodeList) {
+	public void generateEdges(Record targetNodeArray[], LinkedList<Record> nodeList, Map<Long, LinkedList<Long>> edgeListMap) {
 		Iterator<Record> myIterator = nodeList.iterator();
 		while (myIterator.hasNext()) {
 			Record myNode = myIterator.next();
@@ -204,13 +204,25 @@ public class NetworkGenerator {
 					ans_temp.add(targetNode.userid);
 			}
 			
-			LinkedList<Long> ans = _edgeListMap.get(myNode.userid);
+			LinkedList<Long> ans = edgeListMap.get(myNode.userid);
 			if (ans == null) {
 				System.out.println("ans is null!!!!!!!!");
 				System.exit(1);
 			}
-			synchronized (ans) {
-				ans.addAll(ans_temp);
+			
+			ans.addAll(ans_temp);			
+		}
+	}
+	
+	public void mergeEdgeListMap(Map<Long, LinkedList<Long>> edgeListMap){
+		for(Long key: edgeListMap.keySet()){
+			if(_edgeListMap.containsKey(key)){
+				LinkedList<Long> ans = _edgeListMap.get(key);
+				synchronized (ans) {
+					ans.addAll(edgeListMap.get(key));
+				}
+			} else {
+				_edgeListMap.put(key, edgeListMap.get(key));
 			}
 		}
 	}
