@@ -39,6 +39,7 @@ public class NetworkClientRunnable  implements Runnable{
 				edgeTime += (endTime - startTime); 
 				cursorPos += fetchLen;
 			}
+			_networkGenerator.mergeEdgeListMap(edgeListMap);			
 			
 			System.out.println("Total Time on getRecord: "+totalTime +" ms");
 			System.out.println("Total Time on generateEdges: "+edgeTime +" ms");
