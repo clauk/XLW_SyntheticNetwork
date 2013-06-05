@@ -1,12 +1,13 @@
 package rmi;
 
+import gen.*;
+
 import java.rmi.Naming;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
-import gen.NetworkGenerator;
 
 public class NetworkClientRunnable  implements Runnable{
 	private NetworkGenerator _networkGenerator;
@@ -20,20 +21,26 @@ public class NetworkClientRunnable  implements Runnable{
 	public void run() {
 		try {
 			NetworkClient networkClient = new NetworkClient(_serverAddress);
+			LinkedList<Record> nodeList = new LinkedList<Record>(_networkGenerator.getNodeResult());
 			
 			int nodeNum = _networkGenerator.getNodeNum();
 			int cursorPos = 0;
 			int fetchLen = Constants.FETCH_RECORD_BLOCK_SIZE;
-			long totalTime = 0, startTime, endTime;
+			long totalTime = 0, startTime, endTime, edgeTime=0;
 			while(cursorPos < nodeNum){
 				startTime = System.currentTimeMillis();
 				Record [] records = networkClient.getRecord(cursorPos, fetchLen);
 				endTime = System.currentTimeMillis();
 				totalTime += (endTime - startTime);
+				startTime = System.currentTimeMillis();
 				_networkGenerator.generateEdges(records);
+				endTime = System.currentTimeMillis();
+				edgeTime += (endTime - startTime); 
 				cursorPos += fetchLen;
 			}
+			
 			System.out.println("Total Time on getRecord: "+totalTime +" ms");
+			System.out.println("Total Time on generateEdges: "+edgeTime +" ms");
 			System.out.println("Total Node Num: " +nodeNum);
 			System.out.println("Pagesize: " +fetchLen);
 			System.out.println("Total Operation Num: " +(nodeNum+fetchLen-1)/fetchLen);

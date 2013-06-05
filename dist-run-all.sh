@@ -4,7 +4,13 @@ ps aux |grep java | grep barrier|awk '{print $2}'|xargs kill -9
 rm results
 rm log*
 
-java -Xms512M -Xmx2G  -jar barrier.jar 4 > log_barrier 2>&1 & # 3 means number of servers in the system
+NODE_NUM=256k
+PAGESIZE=16384
+SERVER_NUM=4
+FOLDER_NAME="$SERVER_NUM"_"$NODE_NUM"_"$PAGESIZE"
+mkdir "$FOLDER_NAME"
+
+java -Xms512M -Xmx2G  -jar barrier.jar 4 > "$FOLDER_NAME"/log_barrier 2>&1 & # 3 means number of servers in the system
 sleep 2
 echo "barrier started"
 
@@ -27,6 +33,6 @@ for ((SERVER_ID=0;SERVER_ID<$SERVER_NUM; SERVER_ID++))
     LOG=log$SERVER_ID
     echo "server ip: $SERVER_IP  start node id: $NODE_START_ID  log: $LOG"
     ssh chen@compute-0-$SERVER_IP.local "ps aux|grep java |grep server.jar | awk '{print $2}'|xargs kill -9;"
-    ssh chen@compute-0-$SERVER_IP.local " cd $JAR_PATH; echo `hostname -a`; java -Xms512M -Xmx2G -jar $JAR_PATH/server.jar $SERVER_ID $NODE_START_ID > $LOG 2>&1 &" &
+    ssh chen@compute-0-$SERVER_IP.local " cd $JAR_PATH; echo `hostname -a`; java -Xms512M -Xmx2G -jar $JAR_PATH/server.jar $SERVER_ID $NODE_START_ID > "$FOLDER_NAME"/$LOG 2>&1 &" &
   done
 echo "finish invoking servers"

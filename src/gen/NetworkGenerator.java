@@ -174,16 +174,43 @@ public class NetworkGenerator {
 		Iterator<Record> myIterator = _nodeList.iterator();
 		while (myIterator.hasNext()) {
 			Record myNode = myIterator.next();
+			LinkedList<Long> ans_temp = new  LinkedList<Long>();
+			for(Record targetNode : targetNodeArray){
+				if (checkEdges(myNode, targetNode))
+					ans_temp.add(targetNode.userid);
+			}
+			
 			LinkedList<Long> ans = _edgeListMap.get(myNode.userid);
 			if (ans == null) {
 				System.out.println("ans is null!!!!!!!!");
 				System.exit(1);
 			}
 			synchronized (ans) {
-				for(Record targetNode : targetNodeArray){
-					if (checkEdges(myNode, targetNode))
-						ans.add(targetNode.userid);
-				}
+				ans.addAll(ans_temp);
+			}
+		}
+	}
+	
+	/*
+	 * @Parameter array type Record
+	 */
+	public void generateEdges(Record targetNodeArray[], LinkedList<Record> nodeList) {
+		Iterator<Record> myIterator = nodeList.iterator();
+		while (myIterator.hasNext()) {
+			Record myNode = myIterator.next();
+			LinkedList<Long> ans_temp = new  LinkedList<Long>();
+			for(Record targetNode : targetNodeArray){
+				if (checkEdges(myNode, targetNode))
+					ans_temp.add(targetNode.userid);
+			}
+			
+			LinkedList<Long> ans = _edgeListMap.get(myNode.userid);
+			if (ans == null) {
+				System.out.println("ans is null!!!!!!!!");
+				System.exit(1);
+			}
+			synchronized (ans) {
+				ans.addAll(ans_temp);
 			}
 		}
 	}
