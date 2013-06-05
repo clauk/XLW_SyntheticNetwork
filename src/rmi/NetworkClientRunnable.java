@@ -33,7 +33,7 @@ public class NetworkClientRunnable  implements Runnable{
 				endTime = System.currentTimeMillis();
 				totalTime += (endTime - startTime);
 				startTime = System.currentTimeMillis();
-				_networkGenerator.generateEdges(records);
+				_networkGenerator.generateEdges(records, nodeList);
 				endTime = System.currentTimeMillis();
 				edgeTime += (endTime - startTime); 
 				cursorPos += fetchLen;
